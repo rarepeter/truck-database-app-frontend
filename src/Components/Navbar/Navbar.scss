@@ -1,0 +1,43 @@
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #262626;
+    color: white;
+
+    .nav {
+        width: 1080px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+
+        &__logo {
+            background-image: url(../../Assets/favicon.ico);
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+        }
+
+        &__links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+
+            li {
+                padding: 2rem;
+
+                &.primary {
+                    background-color: #f8a145;
+                }
+
+                &:hover {
+                    background-color: #d35100;
+                }
+            }
+        }
+    }
+}

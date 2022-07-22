@@ -1,0 +1,37 @@
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #262626;
+  color: white;
+}
+.navbar .nav {
+  width: 1080px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.navbar .nav__logo {
+  background-image: url(../../Assets/favicon.ico);
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+}
+.navbar .nav__links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.navbar .nav__links li {
+  padding: 2rem;
+}
+.navbar .nav__links li.primary {
+  background-color: #f8a145;
+}
+.navbar .nav__links li:hover {
+  background-color: #d35100;
+}/*# sourceMappingURL=Navbar.css.map */
