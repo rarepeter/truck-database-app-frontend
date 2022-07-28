@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import './Adddriverform.css'
-import { useNavigate } from 'react-router-dom'
 import Button from '../../Components/Button/Button.jsx'
 
 export default function AddDriverForm() {
+
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [passportId, setPassportId] = useState('')
@@ -25,16 +26,24 @@ export default function AddDriverForm() {
             console.log(error)
         }
     }
+
     return (
         <div className="form-page-wrapper">
             <div className="form-wrapper">
                 <form>
-                    <label htmlFor="first-name">First name:</label>
-                    <input type="text" id="first-name" onChange={e => setFirstName(e.target.value)} />
-                    <label htmlFor="last-name">Last name:</label>
-                    <input type="text" id="last-name" onChange={e => setLastName(e.target.value)} />
-                    <label htmlFor="passport-id">Passport ID:</label>
-                    <input type="text" id="passport-id" onChange={e => setPassportId(e.target.value)} />
+                    <h1>ADDING DRIVER</h1>
+                    <div>
+                        <label htmlFor="first-name">First name</label>
+                        <input type="text" id="first-name" onChange={e => setFirstName(e.target.value)} />
+                    </div>
+                    <div>
+                        <label htmlFor="last-name">Last name</label>
+                        <input type="text" id="last-name" onChange={e => setLastName(e.target.value)} />
+                    </div>
+                    <div>
+                        <label htmlFor="passport-id">Passport ID</label>
+                        <input type="text" id="passport-id" onChange={e => setPassportId(e.target.value)} />
+                    </div>
 
                     <Button onClick={handleSubmit}>
                         SUBMIT
