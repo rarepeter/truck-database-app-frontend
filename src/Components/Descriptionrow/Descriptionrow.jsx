@@ -2,10 +2,13 @@ import React from 'react'
 import './Descriptionrow.css'
 
 export default function Descriptionrow({ rows }) {
+
+    const keys = Object.keys(rows)
+
     return (
         <div className='tablerow top'>
-            {rows.map(item => {
-                return (<div className={item.toLowerCase()}>{item}</div>)
+            {keys.map(val => {
+                return (<div key={val}>{rows[val]}</div>)
             })}
         </div>
     )

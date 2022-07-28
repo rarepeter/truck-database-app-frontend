@@ -1,12 +1,21 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import axios from 'axios'
-import './Trucksdb.css'
-import Truckstable from '../../Components/Truckstable/Truckstable'
+import '../../Styles/Dbpage/Dbpage.css'
+import Table from '../../Components/Table/Table'
 
 export default function Trucksdb() {
 
   const [data, setData] = useState([])
+
+  const rows = {
+    licensePlate: "License plate",
+    brand: "Brand",
+    model: "Model",
+    engine: "Engine"
+  }
+
+  const collection = "trucks"
 
   useEffect(() => {
     fetchData()
@@ -21,7 +30,7 @@ export default function Trucksdb() {
     <>
       <div className="db-wrapper">
         <h1>TRUCKS</h1>
-        <Truckstable data={data} />
+        <Table data={data} rows={rows} collection={collection}/>
       </div>
     </>
   )

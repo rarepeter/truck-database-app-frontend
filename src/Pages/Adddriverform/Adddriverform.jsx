@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import './Adddriverform.css'
+import '../../Styles/Form page/Formpage.css'
 import Button from '../../Components/Button/Button.jsx'
 
 export default function AddDriverForm() {
