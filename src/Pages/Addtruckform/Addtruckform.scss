@@ -1,0 +1,43 @@
+@import '../../colors';
+
+.form-page-wrapper {
+    width: 1080px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .form-wrapper {
+        width: 1080px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 2rem 0;
+
+        form {
+            width: 400px;
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 2rem;
+            background-color: #282828;
+
+            h1 {
+                color: $secondary;
+            }
+
+            div {
+                display: flex;
+                align-items: flex-start;
+                justify-content: center;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            div label {
+                color: #ff9736;
+            }
+        }
+    }
+}

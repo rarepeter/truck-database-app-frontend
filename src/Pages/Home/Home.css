@@ -1,0 +1,37 @@
+.menu-card {
+  width: auto;
+  margin: 1rem 0 0 0;
+  padding: 2rem 7rem;
+  background-color: #262626;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
+}
+.menu-card__profile-pic {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: linear-gradient(140.26deg, rgba(248, 161, 69, 0.890625) 22.7%, #F8A145 22.7%, rgba(248, 161, 69, 0.890625) 44.04%, #D35100 85.73%);
+}
+.menu-card__desc {
+  font-size: 2rem;
+  font-weight: 600;
+}
+.menu-card__buttons {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  flex-direction: column;
+}
+.menu-card__buttons .menu-btn {
+  padding: 1rem;
+  background-color: #151515;
+  cursor: pointer;
+  text-align: center;
+}
+.menu-card__buttons .menu-btn:hover {
+  background-color: #d35100;
+}/*# sourceMappingURL=Home.css.map */

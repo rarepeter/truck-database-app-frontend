@@ -1,27 +1,28 @@
 import React, { useEffect } from 'react'
-import axios from 'axios'
 import { useState } from 'react'
+import axios from 'axios'
+import './Trucksdb.css'
+import Truckstable from '../../Components/Truckstable/Truckstable'
 
 export default function Trucksdb() {
-    const [data, setData] = useState([])
 
-    useEffect(() => {
-        fetchData()
-    }, [])
+  const [data, setData] = useState([])
 
-    const fetchData = async () => {
-        const data = await axios.get('http://localhost:5000/trucks')
-        setData(data)
-    }
+  useEffect(() => {
+    fetchData()
+  }, [])
 
-    // setTimeout(() => {
-    //     fetchData()
-    // }, 5000);
-    console.log(data.data)
+  const fetchData = async () => {
+    const data = await axios.get('http://localhost:5000/trucks')
+    setData(data.data)
+  }
+
   return (
     <>
-        <div>asd</div>
-        {data.data != undefined && data.data.map(item => <div>{item.truckId}</div>)}
+      <div className="db-wrapper">
+        <h1>TRUCKS</h1>
+        <Truckstable data={data} />
+      </div>
     </>
-  ) 
+  )
 }

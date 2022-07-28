@@ -1,1 +1,12 @@
-/*# sourceMappingURL=Trucksdb.css.map */
+.db-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 1080px;
+  margin-top: 1rem;
+  color: #ff9736;
+}
+.db-wrapper h1 {
+  font-weight: 600;
+}/*# sourceMappingURL=Trucksdb.css.map */

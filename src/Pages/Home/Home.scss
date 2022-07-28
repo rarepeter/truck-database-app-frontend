@@ -1,0 +1,46 @@
+@import '../../colors';
+
+.menu-card {
+    width: auto;
+    margin: 1rem 0 0 0;
+    padding: 2rem 7rem;
+    background-color: $darkprimary;
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+
+    &__profile-pic {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+
+        background: linear-gradient(140.26deg, rgba(248, 161, 69, 0.890625) 22.7%, #F8A145 22.7%, rgba(248, 161, 69, 0.890625) 44.04%, #D35100 85.73%);
+    }
+
+    &__desc {
+        font-size: 2rem;
+        font-weight: 600;
+    }
+
+    &__buttons {
+        display: flex;
+        align-items: stretch;
+        justify-content: center;
+        flex-direction: column;
+
+        .menu-btn {
+            padding: 1rem;
+            background-color: $darkbg;
+            cursor: pointer;
+            text-align: center;
+
+            &:hover {
+                background-color: $primary;
+            }
+        }
+    }
+}

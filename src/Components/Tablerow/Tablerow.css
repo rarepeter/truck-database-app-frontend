@@ -1,0 +1,46 @@
+.tablerow {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: nowrap;
+  background-color: #d35100;
+  color: white;
+}
+.tablerow div {
+  padding: 1rem;
+  flex: 1;
+}
+
+.tablerow:nth-child(even) {
+  cursor: pointer;
+}
+.tablerow:nth-child(even):hover div {
+  background-color: #f8a145;
+}
+.tablerow:nth-child(even) div {
+  background-color: #565656;
+}
+
+.tablerow:nth-child(odd) {
+  cursor: pointer;
+}
+.tablerow:nth-child(odd):hover div {
+  background-color: #f8a145;
+}
+.tablerow:nth-child(odd) div {
+  background-color: #404040;
+}
+
+.tablerow:first-child {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  cursor: default;
+}
+.tablerow:first-child:hover div {
+  background-color: rgb(37, 37, 37);
+}
+.tablerow:first-child div {
+  background-color: rgb(37, 37, 37);
+}/*# sourceMappingURL=Tablerow.css.map */

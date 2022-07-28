@@ -15,6 +15,13 @@ img {
     width: 100%;
 }
 
+#root {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 body {
-    background-color: #fff;
+    background-color: #151515;
 }

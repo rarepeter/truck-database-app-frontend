@@ -1,0 +1,60 @@
+.tablerow {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: nowrap;
+
+    background-color: #d35100;
+    color: white;
+
+    div {
+        padding: 1rem;
+        flex: 1;
+    }
+}
+
+
+.tablerow:nth-child(even) {
+    cursor: pointer;
+
+    &:hover {
+        div {
+            background-color: #f8a145;
+        }
+    }
+
+    div {
+        background-color: #565656;
+    }
+}
+
+.tablerow:nth-child(odd) {
+    cursor: pointer;
+
+    &:hover {
+        div {
+            background-color: #f8a145;
+        }
+    }
+
+    div {
+        background-color: #404040;
+    }
+}
+
+.tablerow:first-child {
+    position: sticky;
+    top: 0;
+    cursor: default;
+
+    &:hover {
+        div {
+            background-color: rgb(37, 37, 37);
+        }
+    }
+
+    div {
+        background-color: rgb(37, 37, 37);
+    }
+}

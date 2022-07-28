@@ -1,0 +1,13 @@
+.btn {
+    padding: 1rem;
+    font-weight: 600;
+    border: none;
+    background-color: #151515;
+    cursor: pointer;
+    color: #f8a145;
+
+    &:hover {
+        background-color: #f8a145;
+        color: white;
+    }
+}
