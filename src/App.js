@@ -9,6 +9,7 @@ import Errorpage from './Pages/Errorpage/Errorpage'
 import Truckpage from './Pages/Truckpage/Truckpage';
 import AddDriverForm from './Pages/Adddriverform/Adddriverform';
 import Driversdb from './Pages/Driversdb/Driversdb';
+import Driverpage from './Pages/Driverpage/Driverpage';
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
         <Route path="/trucks" element={<Trucksdb />} />
         <Route path="/trucks/:id" element={<Truckpage />} />
         <Route path="/drivers" element={<Driversdb />} />
-        {/* <Route path="/drivers/:id" element={<Driverpage />} /> */}
+        <Route path="/drivers/:id" element={<Driverpage />} />
         <Route path="*" element={<Errorpage />} />
       </Routes>
     </Router>
