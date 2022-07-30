@@ -3,12 +3,11 @@ import './Table.css'
 import Tablerow from '../Tablerow/Tablerow'
 import Descriptionrow from '../Descriptionrow/Descriptionrow'
 
-export default function Table({ data, rows, collection }) {
-
+export default function Table({ tableData }) {
     return (
         <div className="table-area">
-            <Descriptionrow rows={rows} />
-            {data.map(item => <Tablerow key={item.id} rowdata={item} rows={rows} collection={collection}/>)}
+            <Descriptionrow rows={tableData.rows} />
+            {tableData.data.map(item => <Tablerow key={item.id} rowdata={item} rows={tableData.rows} collection={tableData.collection} onClick={tableData.clickFunction} />)}
         </div>
     )
 }
