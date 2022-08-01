@@ -1,0 +1,28 @@
+.delivery-card {
+  background-color: #262626;
+  width: 1080px;
+  margin-top: 1rem;
+  padding: 2rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 3rem;
+  font-size: 1.5rem;
+  color: white;
+}
+.delivery-card__primary-info, .delivery-card__secondary-info {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+.delivery-card__primary-info div, .delivery-card__secondary-info div {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1rem;
+}
+.delivery-card__primary-info div .title, .delivery-card__secondary-info div .title {
+  color: #f8a145;
+}/*# sourceMappingURL=Deliverypage.css.map */

@@ -28,6 +28,9 @@ export default function AddDriverForm() {
         }
     }
 
+    console.log(startTime)
+    console.log(endTime)
+
     return (
         <div className="form-page-wrapper">
             <div className="form-wrapper">
@@ -43,11 +46,11 @@ export default function AddDriverForm() {
                     </div>
                     <div>
                         <label htmlFor="start-time">Start time</label>
-                        <input type="text" id="start-time" onChange={e => setStartTime(e.target.value)} />
+                        <input type="date" id="start-time" onChange={e => setStartTime(e.target.value)} />
                     </div>
                     <div>
                         <label htmlFor="end-time">End time</label>
-                        <input type="text" id="end-time" onChange={e => setEndTime(e.target.value)} />
+                        <input type="date" id="end-time" onChange={e => setEndTime(e.target.value)} />
                     </div>
 
                     <Button onClick={handleSubmit}>

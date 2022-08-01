@@ -10,6 +10,7 @@ import Truckpage from './Pages/Truckpage/Truckpage';
 import AddDriverForm from './Pages/Adddriverform/Adddriverform';
 import Driversdb from './Pages/Driversdb/Driversdb';
 import Driverpage from './Pages/Driverpage/Driverpage';
+import Deliverypage from './Pages/Deliverypage/Deliverypage';
 import Adddeliveryform from './Pages/Adddeliveryform/Adddeliveryform'
 import Deliveriesdb from './Pages/Deliveriesdb/Deliveriesdb';
 
@@ -30,6 +31,8 @@ function App() {
 
         <Route path="/trucks/:id" element={<Truckpage />} />
         <Route path="/drivers/:id" element={<Driverpage />} />
+        <Route path="/deliveries/:id" element={<Deliverypage />} />
+
         <Route path="*" element={<Errorpage />} />
       </Routes>
     </Router>
