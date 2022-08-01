@@ -10,6 +10,8 @@ import Truckpage from './Pages/Truckpage/Truckpage';
 import AddDriverForm from './Pages/Adddriverform/Adddriverform';
 import Driversdb from './Pages/Driversdb/Driversdb';
 import Driverpage from './Pages/Driverpage/Driverpage';
+import Adddeliveryform from './Pages/Adddeliveryform/Adddeliveryform'
+import Deliveriesdb from './Pages/Deliveriesdb/Deliveriesdb';
 
 function App() {
   return (
@@ -17,11 +19,16 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+
         <Route path="/addtruck" element={<Addtruckform />} />
         <Route path="/adddriver" element={<AddDriverForm />} />
+        <Route path="/adddelivery" element={<Adddeliveryform />} />
+
         <Route path="/trucks" element={<Trucksdb />} />
-        <Route path="/trucks/:id" element={<Truckpage />} />
         <Route path="/drivers" element={<Driversdb />} />
+        <Route path="/deliveries" element={<Deliveriesdb />} />
+
+        <Route path="/trucks/:id" element={<Truckpage />} />
         <Route path="/drivers/:id" element={<Driverpage />} />
         <Route path="*" element={<Errorpage />} />
       </Routes>

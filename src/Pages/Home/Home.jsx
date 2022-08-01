@@ -13,7 +13,7 @@ export default function Home() {
       <div className="menu-card__buttons">
         <div className="menu-btn" onClick={() => navigate(`/addtruck`)}>Add a truck</div>
         <div className="menu-btn" onClick={() => navigate(`/adddriver`)}>Add a driver</div>
-        <div className="menu-btn">Register a delivery</div>
+        <div className="menu-btn" onClick={() => navigate(`/adddelivery`)}>Register a delivery</div>
       </div>
     </div>
   )
