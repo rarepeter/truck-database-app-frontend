@@ -1,26 +1,23 @@
-import React, { useEffect } from 'react'
-import { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import '../../Styles/Dbpage/Dbpage.css'
 import Table from '../../Components/Table/Table'
 import { useFetch } from '../../Hooks/useFetch'
-import { useNavigate } from 'react-router-dom'
 
 export default function Driversdb() {
 
     const [data, setData] = useState([])
     const navigate = useNavigate()
 
-    const rows = {
-        firstName: "First name",
-        lastName: "Last name",
-        passportId: "Passport ID"
-    }
-
     const tableData = {
-        rows: { ...rows },
+        rows: {
+            firstName: "First name",
+            lastName: "Last name",
+            passportId: "Passport ID"
+        },
         collection: "drivers",
         data,
-        clickFunction: function (collection, id) {
+        rowClickFunction: function (collection, id) {
             navigate(`/${collection}/${id}`)
         }
     }
