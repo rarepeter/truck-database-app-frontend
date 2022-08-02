@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import '../../Styles/Dbpage/Dbpage.css'
 import Table from '../../Components/Table/Table'
 import { useFetch } from '../../Hooks/useFetch'
+import Button from '../../Components/Button/Button'
 
 export default function Driversdb() {
 
@@ -35,6 +36,7 @@ export default function Driversdb() {
         <>
             <div className="db-wrapper">
                 <h1>DRIVERS</h1>
+                <Button onClick={() => navigate('/adddriver')}>Add a driver</Button>
                 <Table tableData={tableData} />
             </div>
         </>

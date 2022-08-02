@@ -24,7 +24,7 @@
 .form-page-wrapper .form-wrapper form h1 {
   color: #f8a145;
 }
-.form-page-wrapper .form-wrapper form div {
+.form-page-wrapper .form-wrapper form div.section {
   display: flex;
   align-items: flex-start;
   justify-content: center;

@@ -1,1 +1,1 @@
-{"version":3,"sources":["Dbpage.scss","Dbpage.css"],"names":[],"mappings":"AAAA;EACI,aAAA;EACA,mBAAA;EACA,uBAAA;EACA,sBAAA;EAEA,aAAA;EACA,gBAAA;EACA,cAAA;ACAJ;ADEI;EACI,gBAAA;ACAR","file":"Dbpage.css"}
+{"version":3,"sources":["Dbpage.scss","Dbpage.css"],"names":[],"mappings":"AAAA;EACI,aAAA;EACA,mBAAA;EACA,uBAAA;EACA,sBAAA;EAEA,aAAA;EACA,gBAAA;EACA,cAAA;ACAJ;ADEI;EACI,gBAAA;EACA,cAAA;ACAR","file":"Dbpage.css"}

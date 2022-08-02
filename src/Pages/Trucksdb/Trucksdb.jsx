@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import '../../Styles/Dbpage/Dbpage.css'
 import Table from '../../Components/Table/Table'
 import { useFetch } from '../../Hooks/useFetch'
+import Button from '../../Components/Button/Button'
 
 export default function Trucksdb() {
 
@@ -36,6 +37,7 @@ export default function Trucksdb() {
     <>
       <div className="db-wrapper">
         <h1>TRUCKS</h1>
+        <Button onClick={() => navigate('/addtruck')}>Add a truck</Button>
         <Table tableData={tableData} />
       </div>
     </>

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import '../../Styles/Form page/Formpage.css'
 import Button from '../../Components/Button/Button.jsx'
+import Textinput from '../../Components/Textinput/Textinput'
 
 export default function AddDriverForm() {
 
@@ -32,22 +33,11 @@ export default function AddDriverForm() {
             <div className="form-wrapper">
                 <form>
                     <h1>ADDING DRIVER</h1>
-                    <div>
-                        <label htmlFor="first-name">First name</label>
-                        <input type="text" id="first-name" onChange={e => setFirstName(e.target.value)} />
-                    </div>
-                    <div>
-                        <label htmlFor="last-name">Last name</label>
-                        <input type="text" id="last-name" onChange={e => setLastName(e.target.value)} />
-                    </div>
-                    <div>
-                        <label htmlFor="passport-id">Passport ID</label>
-                        <input type="text" id="passport-id" onChange={e => setPassportId(e.target.value)} />
-                    </div>
+                    <Textinput inputClass='section' id='first-name' onChange={e => setFirstName(e.target.value)} labelText='First name' />
+                    <Textinput inputClass='section' id='last-name' onChange={e => setLastName(e.target.value)} labelText='Last name' />
+                    <Textinput inputClass='section' id='passport-id' onChange={e => setPassportId(e.target.value)} labelText='Passport ID' />
 
-                    <Button onClick={handleSubmit}>
-                        SUBMIT
-                    </Button>
+                    <Button onClick={handleSubmit}>SUBMIT</Button>
                 </form>
             </div>
         </div>

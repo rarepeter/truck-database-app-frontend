@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import '../../Styles/Form page/Formpage.css'
 import Button from '../../Components/Button/Button.jsx'
+import Textinput from '../../Components/Textinput/Textinput'
 
 export default function AddTruckForm() {
 
@@ -33,30 +34,13 @@ export default function AddTruckForm() {
             <div className="form-wrapper">
                 <form>
                     <h1>ADDING TRUCK</h1>
-                    <div>
-                        <label htmlFor="truck-brand">Truck brand</label>
-                        <input type="text" id="truck-brand" onChange={e => setTruckBrand(e.target.value)} />
-                    </div>
-                    <div>
-                        <label htmlFor="truck-model">Truck model</label>
-                        <input type="text" id="truck-model" onChange={e => setTruckModel(e.target.value)} />
-                    </div>
-                    <div>
-                        <label htmlFor="truck-engine">Truck engine</label>
-                        <input type="text" id="trucke-engine" onChange={e => setTruckEngine(e.target.value)} />
-                    </div>
-                    <div>
-                        <label htmlFor="truck-license-plate">Truck license plate</label>
-                        <input type="text" id="truck-license-plate" onChange={e => setTruckLicensePlate(e.target.value)} />
-                    </div>
-                    <div>
-                        <label htmlFor="truck-color">Truck color</label>
-                        <input type="text" id="truck-color" onChange={e => setTruckColor(e.target.value)} />
-                    </div>
+                    <Textinput inputClass='section' id='brand' onChange={e => setTruckBrand(e.target.value)} labelText='Truck brand' />
+                    <Textinput inputClass='section' id='model' onChange={e => setTruckModel(e.target.value)} labelText='Truck model' />
+                    <Textinput inputClass='section' id='engine' onChange={e => setTruckEngine(e.target.value)} labelText='Truck engine' />
+                    <Textinput inputClass='section' id='license-plate' onChange={e => setTruckLicensePlate(e.target.value)} labelText='Truck license plate' />
+                    <Textinput inputClass='section' id='color' onChange={e => setTruckColor(e.target.value)} labelText='Truck color' />
 
-                    <Button onClick={handleSubmit}>
-                        SUBMIT
-                    </Button>
+                    <Button onClick={handleSubmit}>SUBMIT</Button>
                 </form>
             </div>
         </div>
