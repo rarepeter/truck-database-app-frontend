@@ -8,7 +8,7 @@ import Button from '../../Components/Button/Button'
 export default function Deliveriesdb() {
 
   const [data, setData] = useState([])
-  const [driverData, setDriverData] = useState([])
+
   const navigate = useNavigate()
 
   const tableData = {
