@@ -22,7 +22,7 @@ export default function AddDriverForm() {
             const response = await axios.post('http://localhost:5000/drivers', data)
             const success = response.status === 201
 
-            if (success) navigate('/')
+            if (success) navigate('/drivers')
         } catch (error) {
             console.log(error)
         }

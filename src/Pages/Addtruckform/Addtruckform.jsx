@@ -23,7 +23,7 @@ export default function AddTruckForm() {
             const response = await axios.post('http://localhost:5000/trucks', data)
             const success = response.status === 201
 
-            if (success) navigate('/')
+            if (success) navigate('/trucks')
         } catch (error) {
             console.log(error)
         }
@@ -34,10 +34,10 @@ export default function AddTruckForm() {
             <div className="form-wrapper">
                 <form>
                     <h1>ADDING TRUCK</h1>
-                    <Textinput inputClass='section' id='brand' onChange={e => setTruckBrand(e.target.value)} labelText='Truck brand' />
-                    <Textinput inputClass='section' id='model' onChange={e => setTruckModel(e.target.value)} labelText='Truck model' />
-                    <Textinput inputClass='section' id='engine' onChange={e => setTruckEngine(e.target.value)} labelText='Truck engine' />
-                    <Textinput inputClass='section' id='license-plate' onChange={e => setTruckLicensePlate(e.target.value)} labelText='Truck license plate' />
+                    <Textinput inputClass='section' id='brand' onChange={e => setTruckBrand(e.target.value)} labelText='Truck brand' validations={{ isNotEmpty: true }} />
+                    <Textinput inputClass='section' id='model' onChange={e => setTruckModel(e.target.value)} labelText='Truck model' validations={{ isNotEmpty: true }} />
+                    <Textinput inputClass='section' id='engine' onChange={e => setTruckEngine(e.target.value)} labelText='Truck engine' validations={{ isNotEmpty: true }} />
+                    <Textinput inputClass='section' id='license-plate' onChange={e => setTruckLicensePlate(e.target.value)} labelText='Truck license plate' validations={{ isNotEmpty: true }} />
                     <Textinput inputClass='section' id='color' onChange={e => setTruckColor(e.target.value)} labelText='Truck color' />
 
                     <Button onClick={handleSubmit}>SUBMIT</Button>

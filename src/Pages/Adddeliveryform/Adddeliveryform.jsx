@@ -27,7 +27,7 @@ export default function Adddeliveryform() {
             const response = await axios.post('http://localhost:5000/deliveries', data)
             const success = response.status === 201
 
-            if (success) navigate('/')
+            if (success) navigate('/deliveries')
         } catch (error) {
             console.log(error)
         }
