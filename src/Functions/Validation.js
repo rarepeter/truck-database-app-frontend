@@ -1,5 +1,5 @@
 export const validate = (value, validations) => {
-    let isEmptyError = true
+    let isEmptyError = false
     let minLengthError = false
     let maxLengthError = false
     let isEmailError = false

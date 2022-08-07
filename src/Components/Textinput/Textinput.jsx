@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import { validate } from '../../Functions/Validation.js'
 
-
 export default function Textinput({ inputClass, id, onChange, labelText, validations }) {
 
     const [value, setValue] = useState('')
     const [validationErrors, setValidationErrors] = useState([])
     const [isDirty, setIsDirty] = useState(false)
-    
+
     const handleOnChange = (e) => {
+        setIsDirty(true)
         setValue(() => e.target.value)
         onChange(e)
     }
-    
+
     const handleOnBlur = () => {
         setIsDirty(true)
     }

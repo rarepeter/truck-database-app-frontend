@@ -4,6 +4,7 @@ import axios from 'axios'
 import '../../Styles/Form page/Formpage.css'
 import Button from '../../Components/Button/Button.jsx'
 import Textinput from '../../Components/Textinput/Textinput'
+import Fileinput from '../../Components/Fileinput/Fileinput'
 
 export default function AddTruckForm() {
 
@@ -39,6 +40,8 @@ export default function AddTruckForm() {
                     <Textinput inputClass='section' id='engine' onChange={e => setTruckEngine(e.target.value)} labelText='Truck engine' validations={{ isNotEmpty: true }} />
                     <Textinput inputClass='section' id='license-plate' onChange={e => setTruckLicensePlate(e.target.value)} labelText='Truck license plate' validations={{ isNotEmpty: true }} />
                     <Textinput inputClass='section' id='color' onChange={e => setTruckColor(e.target.value)} labelText='Truck color' />
+                    
+                    <Fileinput />
 
                     <Button onClick={handleSubmit}>SUBMIT</Button>
                 </form>
