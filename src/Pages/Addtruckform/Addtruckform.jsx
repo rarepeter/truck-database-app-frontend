@@ -14,7 +14,20 @@ export default function AddTruckForm() {
     const [truckLicensePlate, setTruckLicensePlate] = useState('')
     const [truckColor, setTruckColor] = useState('')
 
+    const [file, setFile] = useState(null)
+
     let navigate = useNavigate()
+
+    const setImage = (e) => {
+        const formData = new FormData()
+        formData.append('image', e.target.files[0])
+        setFile(formData);
+    }
+
+    const uploadImage = async (id) => {
+        file.append('id', id)
+        await axios.post('http://localhost:5000/upload-image', file)
+    }
 
     const handleSubmit = async e => {
         e.preventDefault()
@@ -23,6 +36,8 @@ export default function AddTruckForm() {
             const data = { truckBrand, truckModel, truckEngine, truckLicensePlate, truckColor }
             const response = await axios.post('http://localhost:5000/trucks', data)
             const success = response.status === 201
+
+            uploadImage(response.data.id)
 
             if (success) navigate('/trucks')
         } catch (error) {
@@ -40,8 +55,8 @@ export default function AddTruckForm() {
                     <Textinput inputClass='section' id='engine' onChange={e => setTruckEngine(e.target.value)} labelText='Truck engine' validations={{ isNotEmpty: true }} />
                     <Textinput inputClass='section' id='license-plate' onChange={e => setTruckLicensePlate(e.target.value)} labelText='Truck license plate' validations={{ isNotEmpty: true }} />
                     <Textinput inputClass='section' id='color' onChange={e => setTruckColor(e.target.value)} labelText='Truck color' />
-                    
-                    <Fileinput />
+
+                    <Fileinput onChange={setImage} />
 
                     <Button onClick={handleSubmit}>SUBMIT</Button>
                 </form>
