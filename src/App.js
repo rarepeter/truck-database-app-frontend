@@ -29,7 +29,7 @@ function App() {
         <Route path="/drivers" element={<Driversdb />} />
         <Route path="/deliveries" element={<Deliveriesdb />} />
 
-        <Route path="/trucks/:id" element={<Truckpage />} />
+        <Route path="/trucks/:id" element={<Truckpage collection='trucks'/>} />
         <Route path="/drivers/:id" element={<Driverpage />} />
         <Route path="/deliveries/:id" element={<Deliverypage />} />
 

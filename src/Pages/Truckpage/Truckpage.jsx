@@ -1,24 +1,24 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import axios from 'axios'
 import './Truckpage.css'
+import { useFetch } from '../../Hooks/useFetch'
+import { server } from '../../Config/globalconfig'
 
-export default function Truckpage() {
+export default function Truckpage({ collection }) {
     const { id } = useParams()
 
     const [truck, setTruck] = useState({})
 
-    const fetchData = async () => {
-        const truck = await axios.get(`http://localhost:5000/trucks/${id}`)
-        setTruck(truck.data)
-    }
-
     useEffect(() => {
-        fetchData()
+        (async () => {
+            const truckData = await useFetch(`${server}/${collection}/${id}`)
+            setTruck(truckData)
+        })()
     }, [])
 
     return (
         <div className='truck-card'>
+            <div className="avatar" style={{ backgroundImage: `url(${server}/avatars/${id}-avatar.png)` }}></div>
             <div className="truck-card__primary-info">
                 <div>
                     <div className="title">License plate:</div>

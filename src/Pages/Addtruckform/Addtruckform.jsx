@@ -26,7 +26,7 @@ export default function AddTruckForm() {
 
     const uploadImage = async (id) => {
         file.append('id', id)
-        await axios.post('http://localhost:5000/upload-image', file)
+        await axios.post('http://localhost:5000/upload-avatar', file)
     }
 
     const handleSubmit = async e => {
@@ -37,7 +37,7 @@ export default function AddTruckForm() {
             const response = await axios.post('http://localhost:5000/trucks', data)
             const success = response.status === 201
 
-            uploadImage(response.data.id)
+            if (file) uploadImage(response.data.id)
 
             if (success) navigate('/trucks')
         } catch (error) {
