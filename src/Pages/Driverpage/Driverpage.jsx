@@ -18,6 +18,7 @@ export default function Driverpage({ collection }) {
 
     return (
         <div className='driver-card'>
+            <div className="avatar" style={{ backgroundImage: `url(${serverURL}/avatars/${id}-avatar.png)` }}></div>
             <div className="driver-card__primary-info">
                 <div>
                     <div className="title">First name:</div>

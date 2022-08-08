@@ -1,14 +1,23 @@
 .driver-card {
   background-color: #262626;
-  width: 1080px;
+  width: 600px;
   margin-top: 1rem;
-  padding: 2rem 0;
+  padding: 2rem;
   display: flex;
   align-items: flex-start;
   justify-content: center;
+  flex-direction: column;
   gap: 3rem;
   font-size: 1.5rem;
   color: white;
+}
+.driver-card .avatar {
+  width: 300px;
+  height: 250px;
+  background-size: 100% 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: 2px solid #151515;
 }
 .driver-card__primary-info, .driver-card__secondary-info {
   display: flex;
