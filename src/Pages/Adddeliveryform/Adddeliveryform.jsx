@@ -5,16 +5,16 @@ import Button from '../../Components/Button/Button.jsx'
 import '../../Styles/Form page/Formpage.css'
 import Textinput from '../../Components/Textinput/Textinput.jsx'
 import Timeinput from '../../Components/Timeinput/Timeinput.jsx'
+import { serverURL } from '../../Config/globalconfig.js'
 
-export default function Adddeliveryform() {
+export default function Adddeliveryform({ collection }) {
+
     let navigate = useNavigate()
 
     const [driver, setDriver] = useState('')
     const [truck, setTruck] = useState('')
     const [startTime, setStartTime] = useState(new Date())
     const [endTime, setEndTime] = useState('')
-
-    console.log(startTime);
 
     const today = new Date().toISOString().slice(0, 10)
     const minEndDate = startTime.toISOString().slice(0, 10)
@@ -24,7 +24,7 @@ export default function Adddeliveryform() {
 
         try {
             const data = { driver, truck, startTime, endTime }
-            const response = await axios.post('http://localhost:5000/deliveries', data)
+            const response = await axios.post(`${serverURL}/${collection}`, data)
             const success = response.status === 201
 
             if (success) navigate('/deliveries')

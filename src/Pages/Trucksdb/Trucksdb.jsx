@@ -4,11 +4,12 @@ import '../../Styles/Dbpage/Dbpage.css'
 import Table from '../../Components/Table/Table'
 import { useFetch } from '../../Hooks/useFetch'
 import Button from '../../Components/Button/Button'
+import { serverURL } from '../../Config/globalconfig'
 
-export default function Trucksdb() {
+export default function Trucksdb({ collection }) {
 
-  const [data, setData] = useState([])
   const navigate = useNavigate()
+  const [data, setData] = useState([])
 
   const tableData = {
     rows: {
@@ -17,20 +18,18 @@ export default function Trucksdb() {
       model: "Model",
       engine: "Engine"
     },
-    collection: "trucks",
+    collection,
     data,
     rowClickFunction: function (collection, id) {
       navigate(`/${collection}/${id}`)
     }
   }
 
-  const fetchData = async () => {
-    const data = await useFetch('http://localhost:5000/trucks')
-    setData(() => data)
-  }
-
   useEffect(() => {
-    fetchData()
+    (async () => {
+      const truckData = await useFetch(`${serverURL}/${collection}`)
+      setData(truckData)
+    })()
   }, [])
 
   return (

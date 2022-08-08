@@ -21,17 +21,17 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
 
-        <Route path="/addtruck" element={<Addtruckform />} />
-        <Route path="/adddriver" element={<AddDriverForm />} />
-        <Route path="/adddelivery" element={<Adddeliveryform />} />
+        <Route path="/addtruck" element={<Addtruckform collection='trucks' />} />
+        <Route path="/adddriver" element={<AddDriverForm collection='drivers' />} />
+        <Route path="/adddelivery" element={<Adddeliveryform collection='deliveries' />} />
 
-        <Route path="/trucks" element={<Trucksdb />} />
-        <Route path="/drivers" element={<Driversdb />} />
-        <Route path="/deliveries" element={<Deliveriesdb />} />
+        <Route path="/trucks" element={<Trucksdb collection='trucks' />} />
+        <Route path="/drivers" element={<Driversdb collection='drivers' />} />
+        <Route path="/deliveries" element={<Deliveriesdb collection='deliveries' />} />
 
-        <Route path="/trucks/:id" element={<Truckpage collection='trucks'/>} />
-        <Route path="/drivers/:id" element={<Driverpage />} />
-        <Route path="/deliveries/:id" element={<Deliverypage />} />
+        <Route path="/trucks/:id" element={<Truckpage collection='trucks' />} />
+        <Route path="/drivers/:id" element={<Driverpage collection='drivers' />} />
+        <Route path="/deliveries/:id" element={<Deliverypage collection='deliveries' />} />
 
         <Route path="*" element={<Errorpage />} />
       </Routes>

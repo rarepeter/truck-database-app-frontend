@@ -4,12 +4,12 @@ import '../../Styles/Dbpage/Dbpage.css'
 import Table from '../../Components/Table/Table'
 import { useFetch } from '../../Hooks/useFetch'
 import Button from '../../Components/Button/Button'
+import { serverURL } from '../../Config/globalconfig'
 
-export default function Deliveriesdb() {
-
-  const [data, setData] = useState([])
+export default function Deliveriesdb({ collection }) {
 
   const navigate = useNavigate()
+  const [data, setData] = useState([])
 
   const tableData = {
     rows: {
@@ -18,20 +18,18 @@ export default function Deliveriesdb() {
       startTime: "Start time",
       endTime: "End time"
     },
-    collection: "deliveries",
+    collection,
     data,
     rowClickFunction: function (collection, id) {
       navigate(`/${collection}/${id}`)
     }
   }
 
-  const fetchData = async () => {
-    const data = await useFetch('http://localhost:5000/deliveries')
-    setData(() => data)
-  }
-
   useEffect(() => {
-    fetchData()
+    (async () => {
+      const deliveryData = await useFetch(`${serverURL}/${collection}`)
+      setData(deliveryData)
+    })()
   }, [])
 
   return (

@@ -4,11 +4,12 @@ import '../../Styles/Dbpage/Dbpage.css'
 import Table from '../../Components/Table/Table'
 import { useFetch } from '../../Hooks/useFetch'
 import Button from '../../Components/Button/Button'
+import { serverURL } from '../../Config/globalconfig'
 
-export default function Driversdb() {
+export default function Driversdb({ collection }) {
 
-    const [data, setData] = useState([])
     const navigate = useNavigate()
+    const [data, setData] = useState([])
 
     const tableData = {
         rows: {
@@ -16,20 +17,18 @@ export default function Driversdb() {
             lastName: "Last name",
             passportId: "Passport ID"
         },
-        collection: "drivers",
+        collection,
         data,
         rowClickFunction: function (collection, id) {
             navigate(`/${collection}/${id}`)
         }
     }
 
-    const fetchData = async () => {
-        const data = await useFetch('http://localhost:5000/drivers')
-        setData(() => data)
-    }
-
     useEffect(() => {
-        fetchData()
+        (async () => {
+            const driverData = await useFetch(`${serverURL}/${collection}`)
+            setData(driverData)
+        })()
     }, [])
 
     return (

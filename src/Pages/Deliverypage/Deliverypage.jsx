@@ -1,20 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import axios from 'axios'
 import './Deliverypage.css'
+import { useFetch } from '../../Hooks/useFetch'
+import { serverURL } from '../../Config/globalconfig'
 
-export default function Deliverypage() {
+export default function Deliverypage({ collection }) {
     const { id } = useParams()
 
     const [delivery, setDelivery] = useState({})
 
-    const fetchData = async () => {
-        const delivery = await axios.get(`http://localhost:5000/deliveries/${id}`)
-        setDelivery(delivery.data)
-    }
-
     useEffect(() => {
-        fetchData()
+        (async () => {
+            const deliveryData = await useFetch(`${serverURL}/${collection}/${id}`)
+            setDelivery(deliveryData)
+        })()
     }, [])
 
     return (

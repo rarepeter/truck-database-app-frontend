@@ -1,20 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import axios from 'axios'
 import './Driverpage.css'
+import { useFetch } from '../../Hooks/useFetch'
+import { serverURL } from '../../Config/globalconfig'
 
-export default function Driverpage() {
+export default function Driverpage({ collection }) {
     const { id } = useParams()
 
     const [driver, setDriver] = useState({})
 
-    const fetchData = async () => {
-        const driver = await axios.get(`http://localhost:5000/drivers/${id}`)
-        setDriver(driver.data)
-    }
-
     useEffect(() => {
-        fetchData()
+        (async () => {
+            const driverData = await useFetch(`${serverURL}/${collection}/${id}`)
+            setDriver(driverData)
+        })()
     }, [])
 
     return (

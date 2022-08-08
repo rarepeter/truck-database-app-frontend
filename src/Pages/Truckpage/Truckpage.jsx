@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import './Truckpage.css'
 import { useFetch } from '../../Hooks/useFetch'
-import { server } from '../../Config/globalconfig'
+import { serverURL } from '../../Config/globalconfig'
 
 export default function Truckpage({ collection }) {
     const { id } = useParams()
@@ -11,14 +11,14 @@ export default function Truckpage({ collection }) {
 
     useEffect(() => {
         (async () => {
-            const truckData = await useFetch(`${server}/${collection}/${id}`)
+            const truckData = await useFetch(`${serverURL}/${collection}/${id}`)
             setTruck(truckData)
         })()
     }, [])
 
     return (
         <div className='truck-card'>
-            <div className="avatar" style={{ backgroundImage: `url(${server}/avatars/${id}-avatar.png)` }}></div>
+            <div className="avatar" style={{ backgroundImage: `url(${serverURL}/avatars/${id}-avatar.png)` }}></div>
             <div className="truck-card__primary-info">
                 <div>
                     <div className="title">License plate:</div>

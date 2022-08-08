@@ -5,8 +5,11 @@ import '../../Styles/Form page/Formpage.css'
 import Button from '../../Components/Button/Button.jsx'
 import Textinput from '../../Components/Textinput/Textinput'
 import Fileinput from '../../Components/Fileinput/Fileinput'
+import { serverURL } from '../../Config/globalconfig'
 
-export default function AddTruckForm() {
+export default function AddTruckForm({ collection }) {
+
+    let navigate = useNavigate()
 
     const [truckBrand, setTruckBrand] = useState('')
     const [truckModel, setTruckModel] = useState('')
@@ -16,8 +19,6 @@ export default function AddTruckForm() {
 
     const [file, setFile] = useState(null)
 
-    let navigate = useNavigate()
-
     const setImage = (e) => {
         const formData = new FormData()
         formData.append('image', e.target.files[0])
@@ -26,7 +27,7 @@ export default function AddTruckForm() {
 
     const uploadImage = async (id) => {
         file.append('id', id)
-        await axios.post('http://localhost:5000/upload-avatar', file)
+        await axios.post(`${serverURL}/upload-avatar`, file)
     }
 
     const handleSubmit = async e => {
@@ -34,7 +35,7 @@ export default function AddTruckForm() {
 
         try {
             const data = { truckBrand, truckModel, truckEngine, truckLicensePlate, truckColor }
-            const response = await axios.post('http://localhost:5000/trucks', data)
+            const response = await axios.post(`${serverURL}/${collection}`, data)
             const success = response.status === 201
 
             if (file) uploadImage(response.data.id)
