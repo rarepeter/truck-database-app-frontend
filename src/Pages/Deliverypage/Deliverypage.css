@@ -1,14 +1,18 @@
 .delivery-card {
   background-color: #262626;
-  width: 1080px;
+  width: 600px;
   margin-top: 1rem;
   padding: 2rem;
   display: flex;
   align-items: flex-start;
   justify-content: center;
+  flex-direction: column;
   gap: 3rem;
   font-size: 1.5rem;
   color: white;
+}
+.delivery-card .rdrDateRangePickerWrapper .rdrDefinedRangesWrapper {
+  display: none;
 }
 .delivery-card__primary-info, .delivery-card__secondary-info {
   display: flex;
