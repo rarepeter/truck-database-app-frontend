@@ -5,11 +5,13 @@ import Table from '../../Components/Table/Table'
 import { useFetch } from '../../Hooks/useFetch'
 import Button from '../../Components/Button/Button'
 import { serverURL } from '../../Config/globalconfig'
+import Selectdropdown from '../../Components/Selectdropdown/Selectdropdown'
 
 export default function Driversdb({ collection }) {
 
     const navigate = useNavigate()
     const [data, setData] = useState([])
+    const [selectedSort, setSelectedSort] = useState('')
 
     const tableData = {
         rows: {
@@ -24,6 +26,22 @@ export default function Driversdb({ collection }) {
         }
     }
 
+    const sortOptions = [
+        {
+            value: 'firstName',
+            name: 'First name'
+        },
+        {
+            value: 'lastName',
+            name: 'Last name'
+        }
+    ]
+
+    const sortItems = (sort) => {
+        setSelectedSort(() => sort)
+        setData([...data].sort((a, b) => a[sort].localeCompare(b[sort])))
+    }
+
     useEffect(() => {
         (async () => {
             const driverData = await useFetch(`${serverURL}/${collection}`)
@@ -36,6 +54,7 @@ export default function Driversdb({ collection }) {
             <div className="db-wrapper">
                 <h1>DRIVERS</h1>
                 <Button onClick={() => navigate('/adddriver')}>Add a driver</Button>
+                <Selectdropdown defaultValue='Sort by:' sortOptions={sortOptions} value={selectedSort} onChange={sortItems} />
                 <Table tableData={tableData} />
             </div>
         </>

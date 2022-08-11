@@ -39,15 +39,13 @@ export default function Trucksdb({ collection }) {
     {
       value: 'licensePlate',
       name: 'License'
-    },
+    }
   ]
 
   const sortItems = (sort) => {
     setSelectedSort(() => sort)
     setData([...data].sort((a, b) => a[sort].localeCompare(b[sort])))
   }
-  
-  console.log(selectedSort)
 
   useEffect(() => {
     (async () => {
@@ -61,7 +59,7 @@ export default function Trucksdb({ collection }) {
       <div className="db-wrapper">
         <h1>TRUCKS</h1>
         <Button onClick={() => navigate('/addtruck')}>Add a truck</Button>
-        <Selectdropdown defaultValue='Sort by' sortOptions={sortOptions} value={selectedSort} onChange={sortItems} />
+        <Selectdropdown defaultValue='Sort by:' sortOptions={sortOptions} value={selectedSort} onChange={sortItems} />
         <Table tableData={tableData} />
       </div>
     </>

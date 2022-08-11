@@ -5,11 +5,13 @@ import Table from '../../Components/Table/Table'
 import { useFetch } from '../../Hooks/useFetch'
 import Button from '../../Components/Button/Button'
 import { serverURL } from '../../Config/globalconfig'
+import Selectdropdown from '../../Components/Selectdropdown/Selectdropdown'
 
 export default function Deliveriesdb({ collection }) {
 
   const navigate = useNavigate()
   const [data, setData] = useState([])
+  const [selectedSort, setSelectedSort] = useState('')
 
   const tableData = {
     rows: {
@@ -25,6 +27,22 @@ export default function Deliveriesdb({ collection }) {
     }
   }
 
+  const sortOptions = [
+    {
+      value: 'startTime',
+      name: 'Start time'
+    },
+    {
+      value: 'endTime',
+      name: 'End time'
+    }
+  ]
+
+  const sortItems = (sort) => {
+    setSelectedSort(() => sort)
+    setData([...data].sort((a, b) => a[sort].localeCompare(b[sort])))
+  }
+
   useEffect(() => {
     (async () => {
       const deliveryData = await useFetch(`${serverURL}/${collection}`)
@@ -37,6 +55,7 @@ export default function Deliveriesdb({ collection }) {
       <div className="db-wrapper">
         <h1>DELIVERIES</h1>
         <Button onClick={() => navigate('/adddelivery')}>Register a delivery</Button>
+        <Selectdropdown defaultValue='Sort by:' sortOptions={sortOptions} value={selectedSort} onChange={sortItems} />
         <Table tableData={tableData} />
       </div>
     </>
