@@ -10,4 +10,9 @@
 .db-wrapper h1 {
   font-weight: 600;
   margin: 1rem 0;
+}
+.db-wrapper select {
+  margin: 1rem 0;
+  color: black;
+  padding: 0.5rem;
 }/*# sourceMappingURL=Dbpage.css.map */
