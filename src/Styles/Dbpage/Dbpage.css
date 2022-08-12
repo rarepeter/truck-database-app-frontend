@@ -15,4 +15,9 @@
   margin: 1rem 0;
   color: black;
   padding: 0.5rem;
+}
+.db-wrapper input {
+  color: black;
+  padding: 0.5rem;
+  width: 50%;
 }/*# sourceMappingURL=Dbpage.css.map */

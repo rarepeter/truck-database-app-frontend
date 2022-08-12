@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import '../../Styles/Dbpage/Dbpage.css'
 import Table from '../../Components/Table/Table'
@@ -12,6 +12,19 @@ export default function Trucksdb({ collection }) {
   const navigate = useNavigate()
   const [data, setData] = useState([])
   const [selectedSort, setSelectedSort] = useState('')
+  const [searchQuery, setSearchQuery] = useState('')
+
+  const sortedData = useMemo(() => {
+    console.log(111)
+    if (selectedSort) {
+      return [...data].sort((a, b) => a[selectedSort].localeCompare(b[selectedSort]))
+    }
+    return data
+  }, [selectedSort, data])
+
+  const sortedAndQueriedData = useMemo(() => {
+    return sortedData.filter(item => item.brand.toLowerCase().includes(searchQuery.toLowerCase()))
+  }, [searchQuery, sortedData])
 
   const tableData = {
     rows: {
@@ -21,7 +34,7 @@ export default function Trucksdb({ collection }) {
       engine: "Engine"
     },
     collection,
-    data,
+    data: sortedAndQueriedData,
     rowClickFunction: function (collection, id) {
       navigate(`/${collection}/${id}`)
     }
@@ -38,7 +51,7 @@ export default function Trucksdb({ collection }) {
     },
     {
       value: 'licensePlate',
-      name: 'License'
+      name: 'License plate'
     }
   ]
 
@@ -60,6 +73,7 @@ export default function Trucksdb({ collection }) {
         <h1>TRUCKS</h1>
         <Button onClick={() => navigate('/addtruck')}>Add a truck</Button>
         <Selectdropdown defaultValue='Sort by:' sortOptions={sortOptions} value={selectedSort} onChange={sortItems} />
+        <input type="text" placeholder='Search...' value={searchQuery} onChange={e => setSearchQuery(e.target.value)} />
         <Table tableData={tableData} />
       </div>
     </>
