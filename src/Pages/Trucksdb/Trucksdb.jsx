@@ -23,7 +23,12 @@ export default function Trucksdb({ collection }) {
   }, [selectedSort, data])
 
   const sortedAndQueriedData = useMemo(() => {
-    return sortedData.filter(item => item.brand.toLowerCase().includes(searchQuery.toLowerCase()))
+    return sortedData.filter(item => {
+      return (item.brand.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        item.model.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        item.engine.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        item.licensePlate.toLowerCase().includes(searchQuery.toLowerCase()))
+    })
   }, [searchQuery, sortedData])
 
   const tableData = {
