@@ -15,7 +15,6 @@ export default function Trucksdb({ collection }) {
   const [searchQuery, setSearchQuery] = useState('')
 
   const sortedData = useMemo(() => {
-    console.log(111)
     if (selectedSort) {
       return [...data].sort((a, b) => a[selectedSort].localeCompare(b[selectedSort]))
     }
@@ -30,6 +29,11 @@ export default function Trucksdb({ collection }) {
         item.licensePlate.toLowerCase().includes(searchQuery.toLowerCase()))
     })
   }, [searchQuery, sortedData])
+
+  const sortItems = (sort) => {
+    setSelectedSort(() => sort)
+    setData([...data].sort((a, b) => a[sort].localeCompare(b[sort])))
+  }
 
   const tableData = {
     rows: {
@@ -59,11 +63,6 @@ export default function Trucksdb({ collection }) {
       name: 'License plate'
     }
   ]
-
-  const sortItems = (sort) => {
-    setSelectedSort(() => sort)
-    setData([...data].sort((a, b) => a[sort].localeCompare(b[sort])))
-  }
 
   useEffect(() => {
     (async () => {

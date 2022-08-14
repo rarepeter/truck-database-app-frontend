@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import '../../Styles/Dbpage/Dbpage.css'
 import Table from '../../Components/Table/Table'
@@ -13,6 +13,28 @@ export default function Driversdb({ collection }) {
     const [data, setData] = useState([])
     const [selectedSort, setSelectedSort] = useState('')
 
+    const sortItems = (sort) => {
+        setSelectedSort(() => sort)
+        setData([...data].sort((a, b) => a[sort].localeCompare(b[sort])))
+    }
+
+    const [searchQuery, setSearchQuery] = useState('')
+
+    const sortedData = useMemo(() => {
+        if (selectedSort) {
+            return [...data].sort((a, b) => a[selectedSort].localeCompare(b[selectedSort]))
+        }
+        return data
+    }, [selectedSort, data])
+
+    const sortedAndQueriedData = useMemo(() => {
+        return sortedData.filter(item => {
+            return (item.firstName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                item.lastName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                item.passportId.toLowerCase().includes(searchQuery.toLowerCase()))
+        })
+    }, [searchQuery, sortedData])
+
     const tableData = {
         rows: {
             firstName: "First name",
@@ -20,7 +42,7 @@ export default function Driversdb({ collection }) {
             passportId: "Passport ID"
         },
         collection,
-        data,
+        data: sortedAndQueriedData,
         rowClickFunction: function (collection, id) {
             navigate(`/${collection}/${id}`)
         }
@@ -37,10 +59,6 @@ export default function Driversdb({ collection }) {
         }
     ]
 
-    const sortItems = (sort) => {
-        setSelectedSort(() => sort)
-        setData([...data].sort((a, b) => a[sort].localeCompare(b[sort])))
-    }
 
     useEffect(() => {
         (async () => {
@@ -55,6 +73,7 @@ export default function Driversdb({ collection }) {
                 <h1>DRIVERS</h1>
                 <Button onClick={() => navigate('/adddriver')}>Add a driver</Button>
                 <Selectdropdown defaultValue='Sort by:' sortOptions={sortOptions} value={selectedSort} onChange={sortItems} />
+                <input type="text" placeholder='Search...' value={searchQuery} onChange={e => setSearchQuery(e.target.value)} />
                 <Table tableData={tableData} />
             </div>
         </>
