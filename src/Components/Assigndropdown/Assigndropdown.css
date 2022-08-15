@@ -1,0 +1,20 @@
+.select-item {
+  position: relative;
+  width: 100%;
+}
+.select-item .selected-item {
+  cursor: pointer;
+  padding: 0.5rem;
+  background-color: #f8a145;
+}
+.select-item .select-list {
+  position: absolute;
+  height: 200px;
+  bottom: 100%;
+  left: 0;
+  background-color: #d35100;
+  width: 100%;
+  padding: 0.5rem;
+  overflow: scroll;
+  overflow-x: hidden;
+}/*# sourceMappingURL=Assigndropdown.css.map */

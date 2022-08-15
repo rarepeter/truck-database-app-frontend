@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import './Truckpage.css'
 import { useFetch } from '../../Hooks/useFetch'
 import { serverURL } from '../../Config/globalconfig'
+import Assigndropdown from '../../Components/Assigndropdown/Assigndropdown'
 
 export default function Truckpage({ collection }) {
     const { id } = useParams()
@@ -48,6 +49,7 @@ export default function Truckpage({ collection }) {
                     <div className="desc">{truck.engine}</div>
                 </div>
             </div>
+            <Assigndropdown />
         </div>
     )
 }
