@@ -4,7 +4,7 @@ import './Button.css'
 export default function Button(props) {
 
   return (
-    <button className='btn' onClick={(e) => props.onClick(e)}>
+    <button disabled={props.disabled ? props.disabled : false} className='btn' onClick={(e) => props.onClick(e)}>
       {props.children}
     </button>
   )

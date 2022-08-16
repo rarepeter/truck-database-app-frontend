@@ -5,16 +5,23 @@
 .select-item .selected-item {
   cursor: pointer;
   padding: 0.5rem;
-  background-color: #f8a145;
+  background-color: #d35100;
+  text-align: center;
 }
 .select-item .select-list {
   position: absolute;
   height: 200px;
   bottom: 100%;
   left: 0;
-  background-color: #d35100;
+  background-color: #151515;
   width: 100%;
-  padding: 0.5rem;
   overflow: scroll;
   overflow-x: hidden;
+}
+.select-item .select-list > * {
+  cursor: pointer;
+  padding: 0.5rem;
+}
+.select-item .select-list > *:hover {
+  background-color: #d35100;
 }/*# sourceMappingURL=Assigndropdown.css.map */

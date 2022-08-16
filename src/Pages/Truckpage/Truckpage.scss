@@ -44,4 +44,17 @@
             }
         }
     }
+
+    .driver-assigning {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 300px;
+
+        button {
+            width: 100%;
+        }
+    }
 }

@@ -7,7 +7,8 @@
     .selected-item {
         cursor: pointer;
         padding: 0.5rem;
-        background-color: $secondary;
+        background-color: $primary;
+        text-align: center;
     }
 
     .select-list {
@@ -15,10 +16,18 @@
         height: 200px;
         bottom: 100%;
         left: 0;
-        background-color: $primary;
+        background-color: $darkbg;
         width: 100%;
-        padding: 0.5rem;
         overflow: scroll;
         overflow-x: hidden;
+        
+        & > * {
+            cursor: pointer;
+            padding: 0.5rem;
+
+            &:hover {
+                background-color: $primary;
+            }
+        }
     }
 }

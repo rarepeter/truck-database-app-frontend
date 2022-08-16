@@ -9,11 +9,15 @@ export default function Truckpage({ collection }) {
     const { id } = useParams()
 
     const [truck, setTruck] = useState({})
+    const [assignedDriver, setAssignedDriver] = useState({})
+
 
     useEffect(() => {
         (async () => {
             const truckData = await useFetch(`${serverURL}/${collection}/${id}`)
             setTruck(truckData)
+            const assignedDriverData = await useFetch(`${serverURL}/drivers/${truckData.activeDrivers}`)
+            setAssignedDriver(assignedDriverData)
         })()
     }, [])
 
@@ -48,8 +52,14 @@ export default function Truckpage({ collection }) {
                     <div className="title">Engine:</div>
                     <div className="desc">{truck.engine}</div>
                 </div>
+                <div>
+                    <div className="title">Assigned driver:</div>
+                    <div className="desc">{(Object.keys(assignedDriver).length === 0) && (truck.activeDrivers !== undefined) ? '' : `${assignedDriver.firstName} ${assignedDriver.lastName}`}</div>
+                </div>
             </div>
-            <Assigndropdown />
+            <div className="driver-assigning">
+                <Assigndropdown truck={truck} />
+            </div>
         </div>
     )
 }

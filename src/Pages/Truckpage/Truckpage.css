@@ -34,4 +34,15 @@
 }
 .truck-card__primary-info div .title, .truck-card__secondary-info div .title {
   color: #f8a145;
+}
+.truck-card .driver-assigning {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 300px;
+}
+.truck-card .driver-assigning button {
+  width: 100%;
 }/*# sourceMappingURL=Truckpage.css.map */
