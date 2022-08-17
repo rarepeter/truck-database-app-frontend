@@ -49,9 +49,9 @@ export default function AddDriverForm({ collection }) {
             <div className="form-wrapper">
                 <form>
                     <h1>ADDING DRIVER</h1>
-                    <Textinput inputClass='section' id='first-name' onChange={e => setFirstName(e.target.value)} labelText='First name' />
-                    <Textinput inputClass='section' id='last-name' onChange={e => setLastName(e.target.value)} labelText='Last name' />
-                    <Textinput inputClass='section' id='passport-id' onChange={e => setPassportId(e.target.value)} labelText='Passport ID' />
+                    <Textinput inputClass='section' id='first-name' onChange={e => setFirstName(e.target.value)} labelText='First name' validations={{ isNotEmpty: true }}/>
+                    <Textinput inputClass='section' id='last-name' onChange={e => setLastName(e.target.value)} labelText='Last name' validations={{ isNotEmpty: true }}/>
+                    <Textinput inputClass='section' id='passport-id' onChange={e => setPassportId(e.target.value)} labelText='Passport ID' validations={{ isNotEmpty: true, reqLength: 13 }}/>
 
                     <Fileinput onChange={setImage} />
 

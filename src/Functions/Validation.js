@@ -2,6 +2,7 @@ export const validate = (value, validations) => {
     let isEmptyError = false
     let minLengthError = false
     let maxLengthError = false
+    let reqLengthError = false
     let isEmailError = false
 
     for (const validation in validations) {
@@ -16,6 +17,9 @@ export const validate = (value, validations) => {
                 break;
             case 'maxLength':
                 if (value.length > validations[validation]) maxLengthError = true
+                break;
+            case 'reqLength':
+                if (value.length !== validations[validation]) reqLengthError = true
                 break;
             case 'isEmail':
                 if (String(value)
@@ -32,6 +36,7 @@ export const validate = (value, validations) => {
         { isEmptyError, msg: "Field is empty" },
         { minLengthError, msg: `Field is too short` },
         { maxLengthError, msg: `Field has too many characters` },
-        { isEmailError, msg: "Field is not an email" }
+        { isEmailError, msg: "Field is not an email" },
+        { reqLengthError, msg: "Field should contain exact number of characters" }
     ]
 }
