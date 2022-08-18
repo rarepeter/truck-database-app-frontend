@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { useFetch } from '../../Hooks/useFetch'
 import { serverURL } from '../../Config/globalconfig'
 import { DateRangePicker } from 'react-date-range'
@@ -16,13 +16,14 @@ export default function Deliverypage({ collection }) {
     useEffect(() => {
         (async () => {
             let deliveryData = await useFetch(`${serverURL}/${collection}/${id}`)
-            console.log(deliveryData)
             const assignedDriver = await useFetch(`${serverURL}/drivers/${deliveryData.assignedDrivers}`)
-            deliveryData.assignedDrivers = `${assignedDriver.firstName} ${assignedDriver.lastName}`
-            deliveryData.assignedDriversId = assignedDriver.passportId
             const assignedTruck = await useFetch(`${serverURL}/trucks/${deliveryData.assignedTrucks}`)
+            deliveryData.assignedDrivers = `${assignedDriver.firstName} ${assignedDriver.lastName}`
+            deliveryData.assignedDriversPassportId = assignedDriver.passportId
+            deliveryData.assignedDriversId = assignedDriver.id
             deliveryData.assignedTrucks = `${assignedTruck.color} ${assignedTruck.brand} ${assignedTruck.model}`
-            deliveryData.assignedTrucksId = assignedTruck.licensePlate
+            deliveryData.assignedTrucksLicensePlate = assignedTruck.licensePlate
+            deliveryData.assignedTrucksId = assignedTruck.id
             setSelectionRange(() => {
                 return {
                     startDate: new Date(deliveryData.startTime),
@@ -32,7 +33,7 @@ export default function Deliverypage({ collection }) {
             })
 
             deliveryData.startTime = new Date(deliveryData.startTime).toLocaleString('en-GB').slice(0, -3)
-            deliveryData.endTime = new Date(deliveryData.startTime).toLocaleString('en-GB').slice(0, -3)
+            deliveryData.endTime = new Date(deliveryData.endTime).toLocaleString('en-GB').slice(0, -3)
 
             setDelivery(deliveryData)
         })()
@@ -43,19 +44,19 @@ export default function Deliverypage({ collection }) {
             <div className="delivery-card__primary-info">
                 <div>
                     <div className="title">Driver:</div>
-                    <div className="desc">{delivery.assignedDrivers}</div>
+                    <div className="desc"><Link to={`/drivers/${delivery.assignedDriversId}`}>{delivery.assignedDrivers}</Link></div>
                 </div>
                 <div>
                     <div className="title">Truck:</div>
-                    <div className="desc">{delivery.assignedTrucks}</div>
+                    <div className="desc"><Link to={`/trucks/${delivery.assignedTrucksId}`}>{delivery.assignedTrucks}</Link></div>
                 </div>
                 <div>
                     <div className="title">Driver passport ID:</div>
-                    <div className="desc">{delivery.assignedDriversId}</div>
+                    <div className="desc">{delivery.assignedDriversPassportId}</div>
                 </div>
                 <div>
                     <div className="title">Truck license plate:</div>
-                    <div className="desc">{delivery.assignedTrucksId}</div>
+                    <div className="desc">{delivery.assignedTrucksLicensePlate}</div>
                 </div>
             </div>
 
