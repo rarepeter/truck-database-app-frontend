@@ -59,14 +59,8 @@ export default function Deliveriesdb({ collection }) {
         return delivery
       })
       newDataArray = newDataArray.map((delivery) => {
-        const start = new Date(delivery.startTime)
-        const end = new Date(delivery.endTime)
-        let date = start.toLocaleDateString('en-GB', { year: "numeric", month: "2-digit", day: "2-digit" })
-        let time = start.toLocaleTimeString('en-GB', { timeStyle: "short" })
-        delivery.startTime = `${date} | ${time}`
-        date = end.toLocaleDateString('en-GB', { year: "numeric", month: "2-digit", day: "2-digit" })
-        time = end.toLocaleTimeString('en-GB', { timeStyle: "short" })
-        delivery.endTime = `${date} | ${time}`
+        delivery.startTime = new Date(delivery.startTime).toLocaleString('en-GB').slice(0, -3)
+        delivery.endTime = new Date(delivery.startTime).toLocaleString('en-GB').slice(0, -3)
         return delivery
       })
       setData(() => newDataArray)

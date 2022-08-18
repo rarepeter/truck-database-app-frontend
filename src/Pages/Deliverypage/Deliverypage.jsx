@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import './Deliverypage.css'
 import { useFetch } from '../../Hooks/useFetch'
 import { serverURL } from '../../Config/globalconfig'
 import { DateRangePicker } from 'react-date-range'
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
+import './Deliverypage.css'
 
 export default function Deliverypage({ collection }) {
     const { id } = useParams()
@@ -30,14 +30,9 @@ export default function Deliverypage({ collection }) {
                     key: 'selection'
                 }
             })
-            const start = new Date(deliveryData.startTime)
-            const end = new Date(deliveryData.endTime)
-            let date = start.toLocaleDateString('en-GB', { year: "numeric", month: "2-digit", day: "2-digit" })
-            let time = start.toLocaleTimeString('en-GB', { timeStyle: "short" })
-            deliveryData.startTime = `${date} | ${time}`
-            date = end.toLocaleDateString('en-GB', { year: "numeric", month: "2-digit", day: "2-digit" })
-            time = end.toLocaleTimeString('en-GB', { timeStyle: "short" })
-            deliveryData.endTime = `${date} | ${time}`
+
+            deliveryData.startTime = new Date(deliveryData.startTime).toLocaleString('en-GB').slice(0, -3)
+            deliveryData.endTime = new Date(deliveryData.startTime).toLocaleString('en-GB').slice(0, -3)
 
             setDelivery(deliveryData)
         })()
