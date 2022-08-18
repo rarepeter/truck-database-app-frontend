@@ -15,16 +15,30 @@ export default function Deliverypage({ collection }) {
 
     useEffect(() => {
         (async () => {
-            const deliveryData = await useFetch(`${serverURL}/${collection}/${id}`)
-            let firstDate = deliveryData.startTime
-            firstDate = firstDate.slice(0, 10)
-            let secondDate = deliveryData.endTime
-            secondDate = secondDate.slice(0, 10)
-            setSelectionRange({
-                startDate: new Date(firstDate),
-                endDate: new Date(secondDate),
-                key: 'selection',
+            let deliveryData = await useFetch(`${serverURL}/${collection}/${id}`)
+            console.log(deliveryData)
+            const assignedDriver = await useFetch(`${serverURL}/drivers/${deliveryData.assignedDrivers}`)
+            deliveryData.assignedDrivers = `${assignedDriver.firstName} ${assignedDriver.lastName}`
+            deliveryData.assignedDriversId = assignedDriver.passportId
+            const assignedTruck = await useFetch(`${serverURL}/trucks/${deliveryData.assignedTrucks}`)
+            deliveryData.assignedTrucks = `${assignedTruck.color} ${assignedTruck.brand} ${assignedTruck.model}`
+            deliveryData.assignedTrucksId = assignedTruck.licensePlate
+            setSelectionRange(() => {
+                return {
+                    startDate: new Date(deliveryData.startTime),
+                    endDate: new Date(deliveryData.endTime),
+                    key: 'selection'
+                }
             })
+            const start = new Date(deliveryData.startTime)
+            const end = new Date(deliveryData.endTime)
+            let date = start.toLocaleDateString('en-GB', { year: "numeric", month: "2-digit", day: "2-digit" })
+            let time = start.toLocaleTimeString('en-GB', { timeStyle: "short" })
+            deliveryData.startTime = `${date} | ${time}`
+            date = end.toLocaleDateString('en-GB', { year: "numeric", month: "2-digit", day: "2-digit" })
+            time = end.toLocaleTimeString('en-GB', { timeStyle: "short" })
+            deliveryData.endTime = `${date} | ${time}`
+
             setDelivery(deliveryData)
         })()
     }, [])
@@ -33,12 +47,20 @@ export default function Deliverypage({ collection }) {
         <div className='delivery-card'>
             <div className="delivery-card__primary-info">
                 <div>
-                    <div className="title">Driver ID:</div>
+                    <div className="title">Driver:</div>
                     <div className="desc">{delivery.assignedDrivers}</div>
                 </div>
                 <div>
-                    <div className="title">Truck ID:</div>
+                    <div className="title">Truck:</div>
                     <div className="desc">{delivery.assignedTrucks}</div>
+                </div>
+                <div>
+                    <div className="title">Driver passport ID:</div>
+                    <div className="desc">{delivery.assignedDriversId}</div>
+                </div>
+                <div>
+                    <div className="title">Truck license plate:</div>
+                    <div className="desc">{delivery.assignedTrucksId}</div>
                 </div>
             </div>
 

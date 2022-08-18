@@ -47,12 +47,12 @@ export default function Deliveriesdb({ collection }) {
     (async () => {
       const deliveryData = await useFetch(`${serverURL}/${collection}`)
       const fetchedDriverData = await useFetch(`${serverURL}/drivers`)
+      const fetchedTruckData = await useFetch(`${serverURL}/trucks`)
       let newDataArray = deliveryData.map((delivery) => {
         const foundDriver = fetchedDriverData.find(driver => driver.id === delivery.assignedDrivers)
         delivery.assignedDrivers = `${foundDriver.firstName} ${foundDriver.lastName} | ${foundDriver.passportId}`
         return delivery
       })
-      const fetchedTruckData = await useFetch(`${serverURL}/trucks`)
       newDataArray = newDataArray.map((delivery) => {
         const foundTruck = fetchedTruckData.find(truck => truck.id === delivery.assignedTrucks)
         delivery.assignedTrucks = `${foundTruck.licensePlate}`
