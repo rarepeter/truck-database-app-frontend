@@ -3,8 +3,8 @@ import { Link, useParams } from 'react-router-dom'
 import { useFetch } from '../../Hooks/useFetch'
 import { serverURL } from '../../Config/globalconfig'
 import { DateRangePicker } from 'react-date-range'
-import 'react-date-range/dist/styles.css'; // main style file
-import 'react-date-range/dist/theme/default.css'; // theme css file
+import 'react-date-range/dist/styles.css';
+import 'react-date-range/dist/theme/default.css';
 import './Deliverypage.css'
 
 export default function Deliverypage({ collection }) {

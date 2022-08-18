@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import '../../Styles/Dbpage/Dbpage.css'
-import Table from '../../Components/Table/Table'
 import { useFetch } from '../../Hooks/useFetch'
-import Button from '../../Components/Button/Button'
 import { serverURL } from '../../Config/globalconfig'
+import Table from '../../Components/Table/Table'
+import Button from '../../Components/Button/Button'
 import Selectdropdown from '../../Components/Selectdropdown/Selectdropdown'
+import '../../Styles/Dbpage/Dbpage.css'
 
 export default function Deliveriesdb({ collection }) {
 
@@ -60,7 +60,7 @@ export default function Deliveriesdb({ collection }) {
       })
       newDataArray = newDataArray.map((delivery) => {
         delivery.startTime = new Date(delivery.startTime).toLocaleString('en-GB').slice(0, -3)
-        delivery.endTime = new Date(delivery.startTime).toLocaleString('en-GB').slice(0, -3)
+        delivery.endTime = new Date(delivery.endTime).toLocaleString('en-GB').slice(0, -3)
         return delivery
       })
       setData(() => newDataArray)
