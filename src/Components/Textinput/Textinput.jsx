@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { validate } from '../../Functions/Validation.js'
 
-export default function Textinput({ inputClass, id, onChange, labelText, validations }) {
+export default function Textinput({ inputClass, id, onChange, labelText, validations, isPassword }) {
 
     const [value, setValue] = useState('')
     const [validationErrors, setValidationErrors] = useState([])
@@ -26,7 +26,7 @@ export default function Textinput({ inputClass, id, onChange, labelText, validat
     return (
         <div className={inputClass}>
             {labelText !== undefined && <label htmlFor={id}>{labelText}</label>}
-            <input type="text" placeholder={labelText} value={value} id={id} onChange={(e) => handleOnChange(e)} onBlur={handleOnBlur} />
+            <input type={isPassword ? 'password' : 'text'} placeholder={labelText} value={value} id={id} onChange={(e) => handleOnChange(e)} onBlur={handleOnBlur} />
             {validationErrors !== [] && validationErrors.map(item => {
                 // eslint-disable-next-line
                 if (Object.values(item)[0] === false) { return }
