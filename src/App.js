@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import './App.css'
 import Navbar from './Components/Navbar/Navbar'
@@ -14,28 +14,41 @@ import Deliverypage from './Pages/Deliverypage/Deliverypage';
 import Adddeliveryform from './Pages/Adddeliveryform/Adddeliveryform'
 import Deliveriesdb from './Pages/Deliveriesdb/Deliveriesdb';
 import Login from './Pages/Login/Login';
+import { Context } from './index.js';
+import { observer } from 'mobx-react-lite'
 
 function App() {
+
+  const { store } = useContext(Context)
+
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      store.checkAuth()
+    }
+    // if (!store.isAuth) window.location.replace('/login')
+  }, [])
+
+
   return (
     <Router>
-      <Navbar />
+      {store.isAuth && <Navbar />}
       <Routes>
 
         <Route path="/login" element={<Login />} />
 
-        <Route path="/" element={<Home />} />
+        {store.isAuth && <><Route path="/" element={<Home />} />
 
-        <Route path="/addtruck" element={<Addtruckform collection='trucks' />} />
-        <Route path="/adddriver" element={<AddDriverForm collection='drivers' />} />
-        <Route path="/adddelivery" element={<Adddeliveryform collection='deliveries' />} />
+          <Route path="/addtruck" element={<Addtruckform collection='trucks' />} />
+          <Route path="/adddriver" element={<AddDriverForm collection='drivers' />} />
+          <Route path="/adddelivery" element={<Adddeliveryform collection='deliveries' />} />
 
-        <Route path="/trucks" element={<Trucksdb collection='trucks' />} />
-        <Route path="/drivers" element={<Driversdb collection='drivers' />} />
-        <Route path="/deliveries" element={<Deliveriesdb collection='deliveries' />} />
+          <Route path="/trucks" element={<Trucksdb collection='trucks' />} />
+          <Route path="/drivers" element={<Driversdb collection='drivers' />} />
+          <Route path="/deliveries" element={<Deliveriesdb collection='deliveries' />} />
 
-        <Route path="/trucks/:id" element={<Truckpage collection='trucks' />} />
-        <Route path="/drivers/:id" element={<Driverpage collection='drivers' />} />
-        <Route path="/deliveries/:id" element={<Deliverypage collection='deliveries' />} />
+          <Route path="/trucks/:id" element={<Truckpage collection='trucks' />} />
+          <Route path="/drivers/:id" element={<Driverpage collection='drivers' />} />
+          <Route path="/deliveries/:id" element={<Deliverypage collection='deliveries' />} /></>}
 
         <Route path="*" element={<Errorpage />} />
       </Routes>
@@ -43,4 +56,4 @@ function App() {
   );
 }
 
-export default App;
+export default observer(App);
