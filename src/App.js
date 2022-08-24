@@ -13,12 +13,16 @@ import Driverpage from './Pages/Driverpage/Driverpage';
 import Deliverypage from './Pages/Deliverypage/Deliverypage';
 import Adddeliveryform from './Pages/Adddeliveryform/Adddeliveryform'
 import Deliveriesdb from './Pages/Deliveriesdb/Deliveriesdb';
+import Login from './Pages/Login/Login';
 
 function App() {
   return (
     <Router>
       <Navbar />
       <Routes>
+
+        <Route path="/login" element={<Login />} />
+
         <Route path="/" element={<Home />} />
 
         <Route path="/addtruck" element={<Addtruckform collection='trucks' />} />

@@ -8,7 +8,6 @@ export default function Textinput({ inputClass, id, onChange, labelText, validat
     const [isDirty, setIsDirty] = useState(false)
 
     const handleOnChange = (e) => {
-        setIsDirty(true)
         setValue(() => e.target.value)
         onChange(e)
     }
@@ -22,7 +21,7 @@ export default function Textinput({ inputClass, id, onChange, labelText, validat
             const errors = validate(value, validations)
             if (errors) setValidationErrors(() => errors)
         }
-    }, [value])
+    }, [value, isDirty])
 
     return (
         <div className={inputClass}>
