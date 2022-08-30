@@ -34,7 +34,7 @@ function App() {
       {store.isAuth && <Navbar />}
       <Routes>
 
-        <Route path="/login" element={<Login />} />
+        {!store.isAuth && <Route path="/login" element={<Login />} />}
 
         {store.isAuth && <><Route path="/" element={<Home />} />
 
