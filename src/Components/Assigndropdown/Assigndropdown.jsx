@@ -1,6 +1,5 @@
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import React, { useEffect } from 'react'
-import { useState } from 'react'
 import { serverURL } from '../../Config/globalconfig'
 import { useFetch } from '../../Hooks/useFetch'
 import Button from '../Button/Button'
