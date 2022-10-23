@@ -10,7 +10,7 @@ export default function Truckpage({ collection }) {
 
     const [truck, setTruck] = useState({})
     const [assignedDriver, setAssignedDriver] = useState({})
-
+    const [refresher, setRefresher] = useState(0)
 
     useEffect(() => {
         (async () => {
@@ -19,7 +19,7 @@ export default function Truckpage({ collection }) {
             const assignedDriverData = await useFetch(`${serverURL}/drivers/${truckData.activeDrivers}`)
             setAssignedDriver(assignedDriverData)
         })()
-    }, [])
+    }, [refresher])
 
     return (
         <div className='truck-card'>
@@ -58,7 +58,7 @@ export default function Truckpage({ collection }) {
                 </div>
             </div>
             <div className="driver-assigning">
-                <Assigndropdown truck={truck} />
+                <Assigndropdown truck={truck} setRefresher={setRefresher}/>
             </div>
         </div>
     )

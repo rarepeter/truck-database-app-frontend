@@ -22,10 +22,13 @@ function App() {
   const { store } = useContext(Context)
 
   useEffect(() => {
-    if (localStorage.getItem('token')) {
-      store.checkAuth()
-    }
-    if (!store.isAuth && window.location.href !== 'http://localhost:3000/login') window.location.replace('/login')
+    (async () => {
+      console.log('Rerender..')
+      if (localStorage.getItem('token')) {
+        await store.checkAuth()
+      }
+      if (!store.isAuth && window.location.href !== 'http://localhost:3000/login') window.location.replace('/login')
+    })()
   }, [])
 
   console.log(store.isAuth)

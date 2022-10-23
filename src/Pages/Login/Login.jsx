@@ -3,15 +3,24 @@ import { Context } from '../../index.js'
 import Textinput from '../../Components/Textinput/Textinput'
 import '../../Styles/Form page/Formpage.css'
 import Button from '../../Components/Button/Button.jsx'
+import { useNavigate } from 'react-router-dom'
+import { useEffect } from 'react'
 
 export const Login = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const { store } = useContext(Context)
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if (store.isAuth) navigate('/')
+    }, [])
+
 
     const login = (e) => {
         e.preventDefault();
         store.login(email, password)
+        navigate('/')
         console.log(store.isAuth)
     }
 

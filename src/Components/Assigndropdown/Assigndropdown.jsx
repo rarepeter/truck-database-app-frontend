@@ -5,7 +5,7 @@ import { useFetch } from '../../Hooks/useFetch'
 import Button from '../Button/Button'
 import './Assigndropdown.css'
 
-export default function Assigndropdown({ truck }) {
+export default function Assigndropdown({ truck, setRefresher }) {
 
     const [isActive, setIsActive] = useState(false)
     const [activeDriver, setActiveDriver] = useState({})
@@ -23,7 +23,7 @@ export default function Assigndropdown({ truck }) {
         await axios.put(`${serverURL}/trucks`, newTruckData)
         setActiveDriver({})
         console.log("Driver has been asigned!")
-        window.location.reload()
+        setRefresher(prev => prev + 1)
     }
 
     return (
@@ -34,11 +34,11 @@ export default function Assigndropdown({ truck }) {
                 </div>
                 {isActive && (<div className="select-list">
                     {data.map(item => {
-                        return (<div key={item.id} onClick={() => {setActiveDriver(item)}}>{item.firstName} {item.lastName}</div>)
+                        return (<div key={item.id} onClick={() => { setActiveDriver(item) }}>{item.firstName} {item.lastName}</div>)
                     })}
                 </div>)}
             </div>
-            <Button disabled={Object.keys(activeDriver).length === 0} onClick={() => assignDriver()}>Assign driver</Button>
+            <Button disabled={Object.keys(activeDriver).length === 0} onClick={() => { assignDriver() }}>Assign driver</Button>
         </>
     )
 }
