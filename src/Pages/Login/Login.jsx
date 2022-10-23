@@ -1,6 +1,4 @@
-import React from 'react'
-import { useContext } from 'react'
-import { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Context } from '../../index.js'
 import Textinput from '../../Components/Textinput/Textinput'
 import '../../Styles/Form page/Formpage.css'
@@ -10,8 +8,6 @@ export const Login = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const { store } = useContext(Context)
-
-    console.log(store)
 
     const login = (e) => {
         e.preventDefault();

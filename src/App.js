@@ -25,9 +25,10 @@ function App() {
     if (localStorage.getItem('token')) {
       store.checkAuth()
     }
-    // if (!store.isAuth) window.location.replace('/login')
+    if (!store.isAuth && window.location.href !== 'http://localhost:3000/login') window.location.replace('/login')
   }, [])
 
+  console.log(store.isAuth)
 
   return (
     <Router>

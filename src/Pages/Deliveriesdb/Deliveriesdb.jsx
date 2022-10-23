@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useFetch } from '../../Hooks/useFetch'
 import { serverURL } from '../../Config/globalconfig'
@@ -6,12 +6,17 @@ import Table from '../../Components/Table/Table'
 import Button from '../../Components/Button/Button'
 import Selectdropdown from '../../Components/Selectdropdown/Selectdropdown'
 import '../../Styles/Dbpage/Dbpage.css'
+import { Context } from '../../index.js'
 
 export default function Deliveriesdb({ collection }) {
 
   const navigate = useNavigate()
   const [data, setData] = useState([])
   const [selectedSort, setSelectedSort] = useState('')
+
+  const { store } = useContext(Context)
+
+  console.log(store.isAuth)
 
   const tableData = {
     rows: {
